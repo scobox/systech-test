@@ -544,7 +544,7 @@ let db = [
 let myDb = {};
 db.forEach(element=>{
 	day=element.date.slice(0,10)
-	console.log(day);
+	//console.log(day);
 	if (!myDb[day]){
 		myDb[day]={};
 	}
@@ -554,7 +554,7 @@ db.forEach(element=>{
 	myDb[day][element.id].push(element);
 
 })
-console.log(myDb);
+//console.log(myDb);
 
 
 
@@ -567,7 +567,7 @@ return months[number-1]
 }
 
 function toggleDayVisibilityStatus(event){
-	console.log(event.target.nextElementSibling.classList);
+	//console.log(event.target.nextElementSibling.classList);
 	
 	event.target.nextElementSibling.classList.toggle("hidden");
 	event.target.classList.toggle("hidden");
@@ -576,7 +576,7 @@ function toggleDayVisibilityStatus(event){
 function toggleQuantityVisibility(event){
 	//event.target.nextElementSibling.classList.toggle("hidden");
 	event.target.classList.toggle("hidden");
-	console.log(event.target.parentNode.nextSibling);
+	//console.log(event.target.parentNode.nextSibling);
 	event.target.parentNode.classList.toggle("hidden")
 }
 
@@ -592,7 +592,7 @@ function calculateDayAmount(item){
 
 	let key, sum=0;
 	for (key in item) {
-		console.log("rr",item[key]);
+		//console.log("rr",item[key]);
 		item[key].forEach(invoice=>{
 			sum+=invoice.price*invoice.quantity;
 		})
@@ -638,10 +638,10 @@ var res = nunjucks.render('views/page.njk',{ myDb: myDb,getPieces,roundUp,number
 document.getElementById('nun').innerHTML = res;
 
 let dayCardDate=document.getElementsByClassName("day-card-date");
-console.log(dayCardDate);
+//console.log(dayCardDate);
 
 Object.keys(dayCardDate).forEach(el=>{
-	console.log(dayCardDate[el]);
+	//console.log(dayCardDate[el]);
 	dayCardDate[el].addEventListener("click",(event)=>{
 		toggleDayVisibilityStatus(event);
 	})
@@ -652,7 +652,7 @@ let goodsQuantityOpener=document.getElementsByClassName("goods-quantity-opener")
 
 
 Object.keys(goodsQuantityOpener).forEach(el=>{
-	console.log(goodsQuantityOpener[el]);
+	//console.log(goodsQuantityOpener[el]);
 	goodsQuantityOpener[el].addEventListener("click",(event)=>{
 		toggleQuantityVisibility(event);
 	})
