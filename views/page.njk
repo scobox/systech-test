@@ -1,37 +1,38 @@
-{# <div class="myDiv"> #}
-
 	{% for date, item in myDb %}
-		<div class="day-card">
-			<div class="day-card-date"><div>{{date.slice(8,10)}} {{numberToMonth(date.slice(5,7))}}</div><span>Документов: {{objectSize(item)}} ({{calculateDayAmount(item)}}руб.)</span></div>
-			<div class="day-card-container hidden">
+		<div class="daycard">
+			<div class="daycard__date">
+				<div>{{date.slice(8,10)}} {{numberToMonth(date.slice(5,7))}}</div>
+				<span>Документов: {{objectSize(item)}} ({{calculateDayAmount(item)}}&nbsp;&#8381;)</span>
+			</div>
+			<div class="daycard__container">
 				{%for invoice, details in item%}
-				
 				<div class="invoice">
-				<div class="invoice-count"><span>{{details[0].name}} №{{invoice}}</span> <span>{{calculateInvoiceAmount(details)}}руб.</span></div>
+				<div class="invoice__count"><span>{{details[0].name}} №{{invoice}}</span> <span>{{calculateInvoiceAmount(details)}}&nbsp;&#8381;</span></div>
 					<div class="goods-quantity">
-						<span class="goods-quantity-opener"></span>
+						<span class="goods-quantity__opener"></span>
 						<span>Товаров: {{details.length}}</span>
 					</div>
 					<div class="entry-panel">
 					{%for detail in details%}
-					<div  class="entry-panel-item">
-						<img src="{{detail.image}}" onError="this.src='/systech-test/noimage.jpg'">
+					<div  class="entry-panel__item">
+						<img src="{{detail.image}}" onError="this.src='/systech-test/noimage.jpg'"> 
+						{# on deploy change to onError="this.src='/systech-test/noimage.jpg'" #}
 						<div class="entry">
-							<div class="entry-name-quantity">
-								<div class="entry-name">{{detail.name__1.slice(0,35)}}{%if detail.name__1.length>35%}...{%endif%}</div>
+							<div class="entry__name-quantity">
+								<div class="entry__name">
+								{{detail.name__1}}
+								</div>
 								<div class="entry-quantity">{{detail.quantity}} штук{{getPieces(detail.quantity)}} x {{detail.price}} руб.</div>
 							</div>
-							<div class="entry-price">{{roundUp(detail.price,detail.quantity)}} руб.</div>
+							<div class="entry__price">{{roundUp(detail.price,detail.quantity)}}&nbsp;&#8381;</div>
 						</div>
 					</div>
 					{% endfor %}
 					</div>
 				</div>
-				
 				{% endfor %}
 			</div>
 			
 		</div>
 		{% endfor %}
 
-{# </div> #}

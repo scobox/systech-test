@@ -1,5 +1,5 @@
 
-/*css reset*/
+/*css reset section*/
 * {
 	padding: 0;
 	margin: 0;
@@ -36,12 +36,8 @@ ul li{list-style: none;}
 img{vertical-align: top;}
 
 h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
-/*--------------------*/
+/*end of css reset section*/
 
-.bigred{
-	font-size: 20px;
-	color: red;
-}
 body{
 	padding-top: 12px;
 	background-color: #ccc;
@@ -53,49 +49,48 @@ body{
 	min-width: 320px;
 	margin: 0 auto;
 }
-.day-card{
-	padding: 10px;
-	//margin-bottom: 10px;
+.daycard{
+	padding: 0 10px 0px 10px;
 	background-color: #fff;
 	border-radius: 3px;
 	margin-bottom: 10px;
 }
-.day-card-date{
+.daycard__date{
+	padding: 10px 0;
+	cursor: pointer;
 	padding-left: 40px;
 	font-size: 20px;
 	font-weight: 700;
-	/* padding-bottom: 0px; */
 	position: relative;
 	display: flex;
 	justify-content: space-between;
 	color: rgb(100, 100, 100);
 }
-.day-card-date::before{
+.daycard__date::before{
 	content: "";
 	position: absolute;
 	width: 10px;
 	height: 10px;
-	top: 3px;
+	top: 13px;
 	left: 20px;
 	border: solid #aaa;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 3px;
-	 transform: rotate(45DEG);
-	 transition: all 0.3s ease;
+	border-width: 0 3px 3px 0;
+	display: inline-block;
+	padding: 3px;
+	transform: rotate(45DEG);
+	transition: all 0.3s ease;
 	cursor: pointer;
 }
-.day-card-date.hidden::before{
+.daycard.hidden>.daycard__date::before{
 	transform: rotate(225DEG) translateY(-6px);
-	
-
 }
-.day-card-date ~ .day-card-container.hidden{
+.daycard__container{
 	display: none;
 }
-.day-card-container{
-
+.daycard.hidden > .daycard__container{
+	display: block;
 }
+
 .invoice{
 	padding:20px 0 20px 30px;
 	border-bottom: 1px solid #ccc;
@@ -104,7 +99,7 @@ body{
 	color: rgb(100, 100, 100);
 
 }
-.invoice-count{
+.invoice__count{
 	display: flex;
 	justify-content: space-between;
 	padding-right: 60px;
@@ -112,18 +107,18 @@ body{
 .goods-quantity{
 	padding-left: 40px;
 	padding-top: 10px;
-	
+	cursor: pointer;
 }
 .goods-quantity.hidden ~ .entry-panel{
 	display: block;
 }
-.goods-quantity-opener{
+.goods-quantity__opener{
 	position: relative;
 	display: inline-block;
 	width: 15px;
 	height: 15px;
 }
-.goods-quantity-opener::before{
+.goods-quantity__opener::before{
 	content: "";
 	position: absolute;
 	width: 10px;
@@ -131,28 +126,24 @@ body{
 	top: 1px;
 	left: 0px;
 	border: solid #aaa;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 3px;
-	 transform: rotate(45DEG);
-	 transition: all 0.3s ease;
+	border-width: 0 3px 3px 0;
+	display: inline-block;
+	padding: 3px;
+	transform: rotate(45DEG);
+	transition: all 0.3s ease;
 }
-.goods-quantity-opener.hidden::before{
+.goods-quantity.hidden>.goods-quantity__opener::before{
 	transform: rotate(225DEG) translateY(-6px);
-	
-
 }
-
-
 .entry-panel{
 	padding-top: 20px;
 	display: none;
 }
-.entry-panel-item{
+.entry-panel__item{
 	display: flex;
 	padding-bottom: 15px;
 }
-.entry-panel-item img{
+.entry-panel__item img{
 	width: 70px;
 	height:70px;
 	object-fit:contain;
@@ -169,51 +160,62 @@ body{
 	font-size: 20px; 
 	
 }
-.entry-name-quantity{
+.entry__name-quantity{
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
 }
-.entry-name{
+.entry__name{
 	font-size: 14px;
+	white-space: nowrap;
+	overflow: hidden;
+	padding:0 15px 0 0;
+	text-overflow: ellipsis;
 }
-.entry-price{
+.entry__price{
 	line-height: 48px;
 }
+
+
+/* media section */
+@media(max-width:750px){
+	.entry__name-quantity{
+		max-width: 300px;
+	}
+}
 @media(max-width:650px){
-	.entry-name-quantity{
+	.entry__name-quantity{
 		max-width: 200px;
 	}
-	.entry-price, .entry-quantity{
+	.entry__price, .entry__quantity{
 		font-size: 16px;
 	}
-	
 }
 @media(max-width:550px){
-	.day-card-date{
+	.daycard__date{
 		font-size: 16px;
 	}
 	.entry{
 		padding: 5px;
 	}
-	.entry-name-quantity{
+	.entry__name-quantity{
 		max-width: 160px;
 	}
-	.entry-price, .entry-quantity{
+	.entry__price, .entry__quantity{
 	font-size: 14px;
 	}
 }
 @media(max-width:450px){
-	.day-card-date{
+	.daycard__date{
 		display: block;
 	}
-	.invoice-count{
+	.invoice__count{
 		display: block;
 	}
 }
 @media(max-width:400px){
 	
-	.entry-panel-item img{
+	.entry-panel__item img{
 		display: none;
 	}
 }
